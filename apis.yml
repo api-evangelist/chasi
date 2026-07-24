@@ -1,8 +1,30 @@
 aid: chasi
 name: Chasi
-description: Chasi is a company surfaced as a portfolio company of y-combinator and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Chasi (Chasi AI) is a Y Combinator Winter 2026 company building an AI revenue
+  engine for the equipment industry — sales, rental, and service. Chasi deploys
+  AI agents that plug into an equipment dealer or rental company's existing
+  stack and work around the clock to handle lead intake, quoting, CRM updates,
+  follow-ups, and booking coordination, so teams respond faster, sell more, and
+  maximize fleet utilization without adding headcount. Founded in 2025 by Akash
+  Pavan and Sarman Aulakh, the company targets an industry where fleet
+  utilization often sits below 60% and reps lose hours each day to email,
+  voicemail, and manual data entry. At the time of profiling Chasi is
+  pre-product-public: it exposes a marketing site, a trust center, and a demo
+  booking flow, but publishes no public developer API, OpenAPI, or SDKs yet.
 url: https://raw.githubusercontent.com/api-evangelist/chasi/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/assets/GT39i2nj6q4IM9EL9nYFxG6psDA.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,12 +33,42 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
+- Artificial Intelligence
+- AI Agents
+- Equipment
+- Equipment Rental
+- Equipment Dealers
+- Sales Automation
+- Vertical AI
+- CRM
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/chasi-domain-security.yml
+- type: Website
+  url: https://chasi.ai
+- type: About
+  url: https://chasi.ai/about-us
+- type: TermsOfService
+  url: https://chasi.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://chasi.ai/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/Chasi-AI
+- type: TrustCenter
+  url: https://chasi-ai.trust.site/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/chasi-ai/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

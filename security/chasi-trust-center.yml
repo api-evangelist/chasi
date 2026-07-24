@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: https://chasi-ai.trust.site/
+probe: false
+url: https://chasi-ai.trust.site/
+title: Chasi AI's Trust Center
+summary: >-
+  Chasi AI publishes a hosted Trust Center covering its security and privacy
+  posture (security controls, policies, and compliance status). Access to
+  underlying documents is gated behind a "Request access" flow. As of profiling,
+  SOC 2 is listed as "In progress" (not yet certified).
+certifications:
+- name: SOC 2
+  status: in-progress
+control_families:
+- Product security
+- Data security
+- Network security
+- App security
+- Endpoint security
+- Corporate security
+policies:
+- Business Continuity Plan
+- Network Security Procedure
+- Endpoint Security
+- Business Continuity & Disaster Recovery
+- Incident Management
+- HR Security
+gated: true
+evidence:
+- source: https://chasi-ai.trust.site/
+  keywords:
+  - trust center
+  - security posture
+  - soc 2
+  - compliances
+  - controls
