@@ -9,9 +9,12 @@ description: >-
   maximize fleet utilization without adding headcount. Founded in 2025 by Akash
   Pavan and Sarman Aulakh, the company targets an industry where fleet
   utilization often sits below 60% and reps lose hours each day to email,
-  voicemail, and manual data entry. At the time of profiling Chasi is
-  pre-product-public: it exposes a marketing site, a trust center, and a demo
-  booking flow, but publishes no public developer API, OpenAPI, or SDKs yet.
+  voicemail, and manual data entry. Chasi ships a Clerk-authenticated tenant
+  application at app.chasi.ai, a first-party iOS app, an interactive demo, a
+  Rootly-hosted status page, and a trust center, and is live with equipment
+  businesses in the US and Europe — but as of August 2026 it publishes no public
+  developer API, OpenAPI, GraphQL, MCP server, agent card, or SDK, and its
+  go-to-market is sales-led through a booked demo and a 90-day pilot.
 url: https://raw.githubusercontent.com/api-evangelist/chasi/refs/heads/main/apis.yml
 accessModel:
   pricing: unknown
@@ -33,7 +36,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Artificial Intelligence
@@ -67,8 +70,54 @@ common:
   url: https://chasi-ai.trust.site/
 - type: LinkedIn
   url: https://www.linkedin.com/company/chasi-ai/
+- type: Lifecycle
+  url: lifecycle/chasi-lifecycle.yml
+- type: StatusPage
+  url: https://status.chasi.ai/
+- type: Packages
+  url: packages/chasi-packages.yml
+- type: Plans
+  url: plans/chasi-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/chasi-rate-limits.yml
+- type: Conformance
+  url: conformance/chasi-conformance.yml
+- type: ContentSignal
+  url: well-known/chasi-robots.txt
+- type: LLMsTxt
+  url: llms/chasi-llms.txt
+- type: Careers
+  url: https://app.dover.com/jobs/chasi
+- type: Demo
+  url: https://demo.chasi.co
+- type: iOSApp
+  url: https://apps.apple.com/us/app/chasi-ai/id6761392628
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 9
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Chasi ships real software — a Clerk-authenticated tenant app at
+    app.chasi.ai, an iOS app (v1.6.0, 2026-07-27) and a Rootly status page — but
+    runs no developer program: every spec path 404s on chasi.ai, api.chasi.ai
+    and mcp.chasi.ai do not resolve (and chasi.ai has no wildcard DNS), the
+    Chasi-AI GitHub org has 0 public repos, and the only docs-shaped subdomain,
+    docs.chasi.ai, is mispointed at Cap's (cap.so) documentation — its OpenAPI
+    self-identifies as "Cap HTTP API", so it was rejected under the ownership
+    check and nothing was derived from it.
+  evidence:
+  - url: https://chasi.ai/openapi.json
+    status: 404
+  - url: https://chasi.ai/llms.txt
+    status: 404
+  - url: https://chasi.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://docs.chasi.ai/api
+    status: 200
+  - url: https://api.github.com/orgs/Chasi-AI/repos
+    status: 200
+  checked: '2026-08-13'
