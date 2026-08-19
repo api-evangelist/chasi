@@ -1,0 +1,40 @@
+generated: '2026-08-13'
+method: searched
+source: https://chasi.ai/pilot
+note: >-
+  Chasi publishes NO priced plans. The site has no /pricing page and none
+  appears in https://chasi.ai/sitemap.xml (11 URLs, all marketing). Every
+  commercial call-to-action on the site routes to a booked demo
+  (cal.com/akashpavan/20min) or the pilot form. plan_count is 0 as a measured
+  fact, not as an omission — this is a sales-led, contact-us go-to-market with
+  an Order Form referenced in the Terms of Service.
+
+plan_count: 0
+pricing_model: sales-led
+currency: null
+plans: []
+
+commercial_terms_published:
+- term: 90-day risk-free pilot
+  source: https://chasi.ai/pilot
+  detail: '"Try Chasi Risk-Free for 90 Days" — 100% refund if no value is seen in 90 days.'
+- term: monthly billing, cancel anytime
+  source: https://chasi.ai/pilot
+  detail: '"Cancel anytime, pay monthly" — stated on the pilot page, no rate given.'
+- term: dedicated implementation and support team
+  source: https://chasi.ai/pilot
+  detail: Included with the pilot; no priced tier attached.
+- term: Order Form
+  source: https://chasi.ai/terms-of-service
+  detail: >-
+    The Terms of Service (Chasi AI Inc., a Delaware corporation, effective
+    2025-11-14) binds fees and scope to "the applicable Order Form" rather than
+    to any published rate card.
+
+evidence:
+- url: https://chasi.ai/pilot
+  status: 200
+- url: https://chasi.ai/sitemap.xml
+  status: 200
+- url: https://chasi.ai/terms-of-service
+  status: 200

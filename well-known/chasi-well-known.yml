@@ -1,0 +1,208 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Chasi-controlled host, 2026-08-13
+note: >-
+  Every /.well-known/* path returned a hard 404 on the Chasi marketing host
+  (chasi.ai, Framer) and on chasi.co. The application host (app.chasi.ai,
+  Next.js on Vercel) and the demo host (demo.chasi.co) answer 200 with the same
+  SPA marketing shell for EVERY path, including paths that cannot exist — those
+  are soft 404s and are recorded as misses, not documents. No WellKnown pointer
+  is emitted because Chasi serves no /.well-known/ document. A root-level
+  robots.txt IS served and carries Content-Signal directives, so it is captured
+  below and pointed at with type ContentSignal.
+
+hosts_probed:
+- chasi.ai
+- www.chasi.ai
+- app.chasi.ai
+- chasi.co
+- demo.chasi.co
+- docs.chasi.ai
+
+paths:
+- host: chasi.ai
+  path: /.well-known/security.txt
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/openid-configuration
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/api-catalog
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/ai-plugin.json
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/agent-card.json
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /.well-known/agent.json
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /llms.txt
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /openapi.json
+  status: 404
+  file: null
+- host: chasi.ai
+  path: /robots.txt
+  status: 200
+  file: well-known/chasi-robots.txt
+  content_type: text/plain
+  note: >-
+    Real document, 1,897 bytes. Carries Cloudflare "Managed Content" robots
+    directives including Content-Signal, and an explicit Disallow for
+    Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot, Google-Extended,
+    GPTBot and meta-externalagent.
+- host: chasi.ai
+  path: /sitemap.xml
+  status: 200
+  file: null
+  note: 11 marketing URLs, no developer or API page among them.
+- host: chasi.co
+  path: /.well-known/security.txt
+  status: 404
+  file: null
+- host: chasi.co
+  path: /.well-known/agent-card.json
+  status: 404
+  file: null
+- host: chasi.co
+  path: /llms.txt
+  status: 404
+  file: null
+- host: chasi.co
+  path: /openapi.json
+  status: 404
+  file: null
+- host: app.chasi.ai
+  path: /.well-known/security.txt
+  status: 200
+  file: null
+  note: SOFT 404 — 200 text/html, 75,956-byte SPA marketing shell. Not a document.
+- host: app.chasi.ai
+  path: /.well-known/agent-card.json
+  status: 200
+  file: null
+  note: SOFT 404 — identical SPA shell. Rejected per the agent-card false-positive rule.
+- host: app.chasi.ai
+  path: /openapi.json
+  status: 200
+  file: null
+  note: SOFT 404 — identical SPA shell, no OpenAPI document.
+- host: app.chasi.ai
+  path: /llms.txt
+  status: 200
+  file: null
+  note: SOFT 404 — identical SPA shell.
+- host: app.chasi.ai
+  path: /robots.txt
+  status: 200
+  file: null
+  note: >-
+    Real document (759 bytes) but not saved — it is an operational crawl policy
+    with no Content-Signal or AI-preference directives. Useful only as evidence
+    that /api/, /dashboard/, /onboarding/, /sign-in/, /sign-up/,
+    /accept-invitation/, /settings/ and /members/ routes exist behind auth.
+- host: demo.chasi.co
+  path: /.well-known/agent-card.json
+  status: 200
+  file: null
+  note: SOFT 404 — Next.js SPA shell, 10,431 bytes for every path.
+
+content_signals:
+  served: true
+  source: https://chasi.ai/robots.txt
+  file: well-known/chasi-robots.txt
+  origin: >-
+    Cloudflare "Managed Content" block — a platform-provided default the domain
+    owner opts into, not a hand-authored policy. Recorded as served because the
+    provider chose to serve it.
+  directives:
+  - user_agent: '*'
+    content_signal: search=yes,ai-train=no,use=reference
+    allow: /
+  disallowed_agents:
+  - Amazonbot
+  - Applebot-Extended
+  - Bytespider
+  - CCBot
+  - ClaudeBot
+  - CloudflareBrowserRenderingCrawler
+  - Google-Extended
+  - GPTBot
+  - meta-externalagent
+
+# ---------------------------------------------------------------------------
+# CONTRACT DISCOVERY — recorded here because it is a probe result, and because
+# the most important thing found on a Chasi host does not belong to Chasi.
+# ---------------------------------------------------------------------------
+contract_discovery:
+  verdict: no-published-contract
+  checked: '2026-08-13'
+  rest_openapi:
+    found: false
+    note: >-
+      /openapi.json, /openapi.yaml, /swagger.json, /api-docs and /api were
+      probed on chasi.ai, chasi.co, app.chasi.ai and demo.chasi.co.
+      api.chasi.ai and api.chasi.co do not resolve (NXDOMAIN); chasi.ai has no
+      wildcard DNS, so a missing subdomain is a real absence.
+  graphql:
+    found: false
+    note: No /graphql surface on any Chasi host.
+  mcp:
+    found: false
+    note: >-
+      POST tools/list to https://chasi.ai/mcp returned 404; app.chasi.ai/mcp and
+      demo.chasi.co/mcp returned the SPA shell. mcp.chasi.ai does not resolve.
+  agent_card:
+    found: false
+    note: >-
+      /.well-known/agent-card.json and /.well-known/agent.json 404 on chasi.ai
+      and chasi.co, and return the SPA shell on app.chasi.ai and demo.chasi.co.
+      Nothing written to a2a/.
+  rejected_contracts:
+  - url: https://docs.chasi.ai/api
+    http_status: 200
+    parses_as: OpenAPI 3.1.0
+    rejected: true
+    reason: >-
+      OWNERSHIP FAILURE (pipeline STEP 0c). docs.chasi.ai resolves through
+      Cloudflare to a deployment that serves the documentation of Cap
+      (cap.so) — an unrelated open-source screen-recording company — not
+      Chasi's. The spec at this URL self-identifies as info.title "Cap HTTP
+      API", version 0.0.1, description "Internal API used by Cap Desktop and
+      external services", with Chrome-extension auth operations
+      (extension.startAuth, extension.approveAuth). The host's sitemap
+      (https://docs.chasi.ai/sitemap.xml, 200) lists only cap.so URLs and its
+      robots.txt declares "Sitemap: https://cap.so/sitemap.xml". This is a
+      mispointed / dangling subdomain on chasi.ai, not a Chasi API. NOT SAVED,
+      and nothing was derived from it.
+  - url: https://docs.chasi.ai/llms.txt
+    http_status: 200
+    rejected: true
+    reason: >-
+      Same mispointed host. The document opens "# Cap: Screen Recording,
+      Sharing, and Video Collaboration" and describes Cap Desktop. Not Chasi's
+      llms.txt. NOT SAVED.
+  - url: https://docs.chasi.ai/llms-full.txt
+    http_status: 200
+    rejected: true
+    reason: Same mispointed host; Cap's full reference. NOT SAVED.
+  provider_action: >-
+    docs.chasi.ai currently serves another company's product documentation to
+    anyone who visits it. This is a DNS/hosting misconfiguration on Chasi's own
+    domain and is worth flagging to Chasi independently of anything in this
+    catalog.

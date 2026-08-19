@@ -1,0 +1,69 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry search, PyPI, crates.io, RubyGems, Packagist, Maven Central,
+  pkg.go.dev, NuGet, the Apple App Store lookup API and chasi.ai/products-mobile
+  — searched 2026-08-13
+note: >-
+  Chasi publishes NO client libraries or SDKs in any public package registry.
+  The only first-party artifact distributed through a public registry is the
+  consumer iOS application, recorded below. It is an end-user app, not a client
+  library, so no SDKs pointer is emitted and sdk_count remains 0 — that is the
+  honest measurement, not a gap in this search.
+
+sdk_count: 0
+package_count: 1
+
+packages:
+- name: Chasi AI
+  language: null
+  kind: mobile-app
+  registry: apple-app-store
+  official: true
+  id: '6761392628'
+  bundle_id: com.chasi.mobile
+  url: https://apps.apple.com/us/app/chasi-ai/id6761392628
+  version: 1.6.0
+  published: '2026-07-27'
+  first_released: '2026-05-12'
+  seller: Chasi AI Inc
+  note: >-
+    First-party iOS application, confirmed via the App Store lookup API:
+    sellerName "Chasi AI Inc", bundleId com.chasi.mobile, sellerUrl
+    https://chasi.ai/products/mobile. version/published read from the registry
+    metadata endpoint (itunes.apple.com/lookup?id=6761392628). It wraps no
+    public API — it is the mobile client for Chasi's own tenant application.
+
+registries_searched:
+- registry: npm
+  query: chasi
+  first_party_hits: 0
+  note: >-
+    The @chasi/* scope (@chasi/app, @chasi/manager, @chasi/ui, chasi-lib,
+    chasi-ui, create-chasi-ts) is an unrelated Svelte web framework published by
+    the "rocketbean" author and linked to github.com/rocketbean/chasis. Not
+    Chasi AI Inc. Deliberately NOT recorded as a Chasi package.
+- registry: pypi
+  query: chasi, chasi-ai, chasi-sdk
+  first_party_hits: 0
+  note: All 404 on pypi.org/pypi/<pkg>/json.
+- registry: rubygems
+  query: chasi
+  first_party_hits: 0
+- registry: crates.io
+  query: chasi
+  first_party_hits: 0
+- registry: google-play
+  query: com.chasi.mobile
+  first_party_hits: 0
+  note: >-
+    play.google.com/store/apps/details?id=com.chasi.mobile returned 404 — iOS
+    only at the time of profiling; chasi.ai/products-mobile carries an Android
+    waitlist rather than a listing.
+- registry: github
+  query: github.com/Chasi-AI
+  first_party_hits: 0
+  note: >-
+    The Chasi-AI GitHub organization exists (id 238555690, created
+    2025-10-16, updated 2026-04-27) and has 0 public repositories and 0 public
+    gists. No source, no proto, no published SDK.

@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: searched
+source: https://chasi-ai.trust.site/
+note: >-
+  Nothing to assert against a machine-readable contract — Chasi publishes no
+  OpenAPI, no AsyncAPI and no vocabulary, so every API-level conformance claim
+  below is unassertable rather than failed. The only compliance surface Chasi
+  publishes is a hosted Trust Center, and its single named certification is
+  SOC 2 marked "In progress" — a program under way, not a certification held.
+  For that reason NO `Compliance` pointer is emitted; the existing `TrustCenter`
+  pointer carries the finding at the right strength.
+
+standards:
+- id: soc2
+  conforms: false
+  status: in-progress
+  evidence: >-
+    Chasi AI's Trust Center (https://chasi-ai.trust.site/) lists SOC 2 with
+    status "In progress" as of 2026-08-13. No report, no audit period and no
+    auditor are named, and the underlying documents sit behind a "Request
+    access" flow.
+- id: iso27001
+  conforms: false
+  evidence: Not claimed anywhere on the Trust Center or the site.
+- id: pci-dss
+  conforms: false
+  evidence: Not claimed; Chasi is not a payments provider.
+- id: hipaa
+  conforms: false
+  evidence: Not claimed.
+- id: fedramp
+  conforms: false
+  evidence: Not claimed.
+- id: gdpr
+  conforms: unassertable
+  evidence: >-
+    The Privacy Policy (last updated 2026-02-11) describes Chasi AI Inc. as "a
+    global platform" and sets out collection, use, storage, disclosure and
+    protection commitments, but names no regulation-specific programme,
+    representative or lawful-basis mapping that could be asserted as
+    conformance.
+- id: oauth2
+  conforms: unassertable
+  evidence: >-
+    No public API and no published authorization server. The tenant application
+    at app.chasi.ai loads Clerk for end-user login, which is product
+    authentication rather than a published API authorization surface.
+- id: oidc
+  conforms: unassertable
+  evidence: /.well-known/openid-configuration returns 404 on chasi.ai.
+- id: rfc9457
+  conforms: unassertable
+  evidence: No published error contract.
+- id: idempotency
+  conforms: unassertable
+  evidence: No published API conventions.
+
+control_families_published:
+- Product security
+- Data security
+- Network security
+- App security
+- Endpoint security
+- Corporate security
+
+evidence:
+- url: https://chasi-ai.trust.site/
+  status: 200
+- url: https://chasi.ai/privacy-policy
+  status: 200
+- url: https://chasi.ai/.well-known/openid-configuration
+  status: 404

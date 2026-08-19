@@ -1,0 +1,22 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  chasi.ai (all 11 sitemap pages), chasi.co, app.chasi.ai, demo.chasi.co —
+  searched 2026-08-13
+note: >-
+  Chasi publishes no public API, therefore no rate limits, no rate-limit
+  response headers and no documented exhaustion behaviour. limit_count is 0 as a
+  measured fact. There is no developer documentation host to search: the only
+  docs-shaped subdomain, docs.chasi.ai, serves another company's documentation
+  (see well-known/chasi-well-known.yml, contract_discovery.rejected_contracts).
+
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+
+evidence:
+- url: https://chasi.ai/sitemap.xml
+  status: 200
+- url: https://chasi.ai/openapi.json
+  status: 404

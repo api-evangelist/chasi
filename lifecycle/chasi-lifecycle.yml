@@ -1,0 +1,64 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  DNS + HTTP probes of status.chasi.ai and a search of every published Chasi
+  page, 2026-08-13
+note: >-
+  Chasi runs a hosted status page and publishes nothing else in the lifecycle
+  family. There is no versioning policy, no deprecation policy, no Sunset /
+  Deprecation header commitment, no SLA document and no changelog — consistent
+  with a company that has not shipped a public API.
+
+status_page:
+  present: true
+  url: https://status.chasi.ai/
+  vendor: Rootly
+  verified: probed
+  http_status: 403
+  evidence:
+    dns_cname: eec862b79a22b8c16470a47872747c366fd24626.external-sp.rootly.com
+    response_header: 'cf-mitigated: challenge'
+  note: >-
+    HONEST READ: the page itself could not be read. status.chasi.ai CNAMEs to
+    Rootly's dedicated external-status-page hosting endpoint — provider-owned
+    DNS configuration that only exists because Chasi provisioned a Rootly status
+    page — but Rootly's Cloudflare edge answers every unattended client with a
+    403 bot challenge (cf-mitigated: challenge), including browser, Googlebot
+    and curl user agents. Existence is established by the CNAME; content,
+    component list and incident history were NOT observed. /index.json and
+    /rss.xml also 403; /api/v1/status and /feed.rss 404.
+
+versioning:
+  policy_published: false
+  scheme: null
+  note: No API, no version scheme.
+
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  note: >-
+    No deprecation policy and no RFC 8594 Sunset/Deprecation commitment found on
+    any Chasi page. No Deprecation pointer is emitted.
+
+sla:
+  published: false
+  note: >-
+    The Terms of Service (effective 2025-11-14) binds service commitments to the
+    applicable Order Form; no public SLA or uptime target is published.
+
+changelog:
+  published: false
+  note: >-
+    No dated changelog or release-notes page on chasi.ai, chasi.co,
+    app.chasi.ai or demo.chasi.co. The iOS app carries App Store release notes
+    (v1.6.0, 2026-07-27) but that is a store listing, not a published changelog.
+
+evidence:
+- url: https://status.chasi.ai/
+  status: 403
+- url: https://status.chasi.ai/api/v1/status
+  status: 404
+- url: https://chasi.ai/sitemap.xml
+  status: 200

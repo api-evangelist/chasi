@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: probed
+source: live MCP probes of every Chasi-controlled host, 2026-08-13
+status: none
+note: >-
+  Chasi ships no MCP server — neither a remote endpoint nor a local stdio
+  package — and there is no OpenAPI to derive a candidate tool list from, so no
+  candidate tools are listed. NO MCPServer pointer is emitted in apis.yml: doing
+  so would assert an agent surface that does not exist. This file is a record of
+  the probe, not of a server.
+
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+
+tools: []
+
+probes:
+- url: https://chasi.ai/mcp
+  method: POST tools/list
+  status: 404
+- url: https://app.chasi.ai/mcp
+  method: POST tools/list
+  status: 200
+  result: soft-404 — SPA marketing shell, not a JSON-RPC response
+- url: https://demo.chasi.co/mcp
+  method: POST tools/list
+  status: 200
+  result: soft-404 — Next.js SPA shell, not a JSON-RPC response
+- url: https://mcp.chasi.ai
+  method: DNS
+  status: NXDOMAIN
+- url: https://chasi.ai/.well-known/oauth-authorization-server
+  method: GET
+  status: 404
+- url: https://chasi.ai/.well-known/oauth-protected-resource
+  method: GET
+  status: 404
+
+registry_search:
+  npm: no @chasi or chasi-mcp package published by Chasi AI Inc
+  github: github.com/Chasi-AI has 0 public repositories
